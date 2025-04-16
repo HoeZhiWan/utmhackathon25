@@ -6,6 +6,7 @@
   --color-foreground: #202020;
 
   /* Core theme colors */
+  --color-shade-500: #202020;
   --color-primary: #63cd96;
   --color-primary-light: #aae3c2;
   --color-primary-tint-500: #08bd7a;
