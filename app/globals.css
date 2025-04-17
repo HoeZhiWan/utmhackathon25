@@ -4,34 +4,43 @@
   /* Base colors */
   --color-background: #ffffff;
   --color-foreground: #202020;
-  
+
   /* Core theme colors */
+  --color-shade-500: #202020;
   --color-primary: #63cd96;
   --color-primary-light: #aae3c2;
-  --color-primary-dark: #08bd7a;
-  --color-primary-dark-tint: #39cea0; /* Tinted version: 30% lighter than primary-dark */
-  
+  --color-primary-tint-500: #08bd7a;
+  --color-primary-tint-400: #44c588; /* Tinted version: 30% lighter than primary-dark */
+  --color-primary-neon-tint-400: rgba(
+    68,
+    197,
+    136,
+    0.1
+  ); /* Tinted version: 30% lighter than primary-dark */
+
   --color-secondary: #6b7280;
   --color-secondary-light: #9ca3af;
   --color-secondary-dark: #4b5563;
-  
+
   --color-accent: #f59e0b;
-  
+
   /* Status colors */
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
   --color-info: #3b82f6;
-  
+
   /* UI elements */
   --radius-component: 0.5rem;
-  
+
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-nav: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
+
   /* Fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -43,29 +52,31 @@
     /* Base colors */
     --color-background: #2f2f2f;
     --color-foreground: #ededed;
-    
+
     /* Core theme colors - Adjusted for dark mode */
     --color-primary: #63cd96;
     --color-primary-light: #aae3c2;
     --color-primary-dark: #08bd7a;
     --color-primary-dark-tint: #39cea0; /* Tinted version for dark mode */
-    
+
     --color-secondary: #9ca3af;
     --color-secondary-light: #d1d5db;
     --color-secondary-dark: #202020;
-    
+
     --color-accent: #fbbf24;
-    
+
     /* Status colors - Adjusted for dark mode */
     --color-success: #34d399;
     --color-warning: #fbbf24;
     --color-error: #f87171;
     --color-info: #60a5fa;
-    
+
     /* Shadows - Adjusted for dark mode */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.16);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.2),
+      0 2px 4px -1px rgba(0, 0, 0, 0.16);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2),
+      0 4px 6px -2px rgba(0, 0, 0, 0.15);
     --shadow-nav: 0 2px 4px rgba(0, 0, 0, 0.25);
   }
 }
