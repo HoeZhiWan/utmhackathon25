@@ -1,6 +1,7 @@
 import { Pie } from 'recharts';
 import PieChartComponent from './components/PieChartComponent';
 import TotalCost from './components/dashboard/TotalCost';
+import SuggestionComponent from './components/dashboard/SuggestionComponent';
 
 export default function HomePage() {
   return (
@@ -8,8 +9,8 @@ export default function HomePage() {
       <div className="bg-shade-500 rounded-xl p-4 flex flex-col min-w-[362px]">
         <TotalCost />
       </div>
-      <div className="bg-shade-500 min-w-[362px]">
-        <div>02</div>
+      <div className="bg-shade-500 rounded-xl min-w-[362px]">
+        <SuggestionComponent />
       </div>
       <div className="bg-shade-500">
         <div>03</div>
