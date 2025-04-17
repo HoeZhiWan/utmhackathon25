@@ -53,7 +53,7 @@ const Sidebar = () => {
               <li key={index}>
                 <Link 
                   href={link.href} 
-                  className={`flex box-border items-center px-8 py-4 rounded-lg text-light transition-colors ${isActive ? "border-1 bg-primary-neon-tint-400 border-primary-tint-500" : "hover:bg-primary-neon-tint-400"}`}
+                  className={`flex box-border items-center px-8 py-4 rounded-lg text-light transition-colors ${isActive ? "border-2 bg-primary-neon-tint-400 border-primary-tint-500" : "hover:bg-primary-neon-tint-400"}`}
                 >
                   <span className="mr-3">{link.icon}</span>
                   {link.label}
