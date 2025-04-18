@@ -1,6 +1,7 @@
 import React from 'react'
 import ReturnOfSolar from './components/ReturnOfSolar'
 import SolarPanelBattery from './components/SolarPanelBattery'
+import AlertAndPerformance from './components/AlertAndPerformance'
 
 function page() {
   return (
@@ -18,7 +19,7 @@ function page() {
         
       </div>
       <div className="row-span-2 row-start-2 bg-shade-500 p-4 rounded-xl">
-        
+        <AlertAndPerformance />
       </div>
     </div>
   )
