@@ -1,5 +1,6 @@
 import React from 'react'
 import ReturnOfSolar from './components/ReturnOfSolar'
+import SolarPanelBattery from './components/SolarPanelBattery'
 
 function page() {
   return (
@@ -10,8 +11,8 @@ function page() {
       <div className="bg-shade-500 rounded-xl min-w-[362px]">
         
       </div>
-      <div className="bg-shade-500">
-        <div>03</div>
+      <div className="bg-shade-500 rounded-xl p-4 flex flex-col gap-3 min-w-[362px]">
+        <SolarPanelBattery />
       </div>
       <div className="col-span-2 row-span-2 row-start-2 bg-shade-500">
         
