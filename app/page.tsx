@@ -1,5 +1,5 @@
-import { Pie } from 'recharts';
 import PieChartComponent from './components/PieChartComponent';
+import AreaChartComponent from './components/AreaChartComponent';
 import TotalCost from './components/dashboard/TotalCost';
 import SuggestionComponent from './components/dashboard/SuggestionComponent';
 
@@ -18,8 +18,8 @@ export default function HomePage() {
       <div className="row-span-2 row-start-2 bg-shade-500">
         <PieChartComponent />
       </div>
-      <div className="col-span-2 row-span-2 row-start-2 bg-shade-500">
-        <div>05</div>
+      <div className="col-span-2 row-span-2 row-start-2 bg-shade-500 p-4 rounded-xl">
+        <AreaChartComponent />
       </div>
     </div>
   );
