@@ -21,6 +21,12 @@
     136,
     0.1
   ); /* Tinted version: 30% lighter than primary-dark */
+  --color-primary-neon-tint-500: rgba(
+    8,
+    189,
+    122,
+    0.7
+  ); /* Tinted version: 30% lighter than primary-dark */
 
   --color-secondary: var(--secondary, #6b7280);
   --color-secondary-light: var(--muted, #9ca3af);
