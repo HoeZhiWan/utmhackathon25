@@ -79,7 +79,7 @@ export default function EnergyFlow({ solarWatts = 925, gridWatts = 286, homeWatt
       animationTime = (elapsed / 1000) % 10 // Reset every 10 seconds
 
       // Clear canvas
-      ctx.fillStyle = "#1a1a1a"
+      ctx.fillStyle = "#1e1e1e"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       // Calculate positions based on container size
