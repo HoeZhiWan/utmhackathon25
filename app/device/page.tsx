@@ -1,7 +1,7 @@
 import React from 'react'
-import ReturnOfSolar from './components/ReturnOfSolar'
-import SolarPanelBattery from './components/SolarPanelBattery'
-import AlertAndPerformance from './components/AlertAndPerformance'
+import ReturnOfSolar from '../components/device/ReturnOfSolar'
+import SolarPanelBattery from '../components/device/SolarPanelBattery'
+import AlertAndPerformance from '../components/device/AlertAndPerformance'
 
 function page() {
   return (
