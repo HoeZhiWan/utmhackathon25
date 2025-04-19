@@ -2,6 +2,7 @@ import PieChartComponent from './components/PieChartComponent';
 import AreaChartComponent from './components/AreaChartComponent';
 import TotalCost from './components/dashboard/TotalCost';
 import SuggestionComponent from './components/dashboard/SuggestionComponent';
+import EnergyFlow from './components/dashboard/EnergyFlow';
 
 export default function HomePage() {
   return (
@@ -13,7 +14,7 @@ export default function HomePage() {
         <SuggestionComponent />
       </div>
       <div className="bg-shade-500">
-        <div>03</div>
+        <EnergyFlow solarWatts={19} gridWatts={20} homeWatts={30}/>
       </div>
       <div className="row-span-2 row-start-2 bg-shade-500">
         <PieChartComponent />
