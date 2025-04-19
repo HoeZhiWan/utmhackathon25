@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-Tracker - Smart Energy Monitoring System
+
+## UTMxHackathon 2025 Submission by Team New_Ta_Alto
+
+E-Tracker is a high-fidelity prototype designed to address the growing concerns of climate change by optimizing energy usage in buildings and infrastructure.
+
+## Demo & Design
+
+- **Live Demo:** [https://utmhackathon.vercel.app/](https://utmhackathon.vercel.app/)
+- **Figma Design:** [View Design](https://www.figma.com/design/ocJoAooIcwRgOeFI5ljwdu/Hackathon?node-id=0-1&t=KfsoyRbUbW8Sk6Pp-1)
+
+## Screenshots
+
+![Dashboard Overview](/public/dashboard.png)
+
+## Problem Statement
+
+Buildings and infrastructure are responsible for a significant portion of energy consumption worldwide. Their inefficiencies lead to unnecessary energy waste and increased carbon emissions. Despite growing awareness of sustainability, there is a lack of practical tools that actively guide users towards sustainable energy practices.
+
+## Our Solution
+
+E-Tracker provides a comprehensive dashboard for:
+
+- **Energy Monitoring**: Track real-time energy consumption across different rooms and devices
+- **Solar Integration**: Monitor solar panel performance, battery status, and grid interaction
+- **Cost Analysis**: View total costs, savings, and energy distribution
+- **Intelligent Alerts**: Receive notifications for high consumption and potential issues
+- **Optimization Suggestions**: Get actionable recommendations to reduce energy use
+
+## Key Features
+
+- Interactive energy flow visualization
+- Solar vs. grid energy comparison
+- Room-by-room consumption breakdowns
+- Device-level monitoring with floor plan integration
+- Performance alerts and maintenance tips
+- Cost and savings tracking
 
 ## Getting Started
 
-First, run the development server:
+Clone this repository and run the development server:
 
 ```bash
+npm install
+# or
+pnpm install
+
 npm run dev
 # or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the dashboard.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technologies Used
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Next.js
+- TypeScript
+- Recharts for data visualization
+- Canvas API for interactive energy flows
+- Supabase for data storage and retrieval
 
-## Learn More
+## Project Demo
 
-To learn more about Next.js, take a look at the following resources:
+The application consists of multiple pages:
+- Dashboard: Overview of energy consumption and flows
+- Solar: Dedicated solar energy monitoring and performance
+- Devices: Room and device-level energy monitoring
+- Alerts: System alerts and maintenance suggestions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Future Enhancements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Machine learning for predictive energy optimization
+- Mobile application for on-the-go monitoring
+- Integration with smart home devices for automated control
+- Expanded battery management and storage optimization
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Created for UTMxHackathon 2025 as a solution to optimize energy usage, integrate renewable energy, monitor consumption, and promote sustainable practices.
