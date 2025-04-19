@@ -28,6 +28,12 @@
     0.5
   ); /* Tinted version: 30% lighter than primary-dark */
 
+  --color-primary-purple: #a42bc5;
+  --color-purple-neon: rgba(164, 43, 197, 0.1);
+
+  --color-primary-orange: #f0a01e;
+  --color-orange-neon: rgba(240, 160, 30, 0.1);
+
   --color-secondary: var(--secondary, #6b7280);
   --color-secondary-light: var(--muted, #9ca3af);
   --color-secondary-dark: #4b5563;
