@@ -47,7 +47,7 @@ const Sidebar = () => {
     <aside className="bg-secondary-dark min-h-screen flex flex-col basis-1/4">
       {/* Sidebar header that aligns with navbar */}
       <div className="bg-background-dark flex items-center h-16 px-6 py-[9px] border-b-[3px] border-[rgba(0,0,0,0.25)]">
-        <Link href="/" className="text-2xl font-bold text-light">UTMxHackathon</Link>
+        <Link href="/" className="text-2xl font-bold text-light">⚡E-Tracker</Link>
       </div>
       
       {/* Sidebar content */}

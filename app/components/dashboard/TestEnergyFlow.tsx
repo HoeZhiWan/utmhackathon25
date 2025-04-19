@@ -1,30 +1,172 @@
+'use client'
+
 import { Grid, HousePlug, Sun, UtilityPole } from 'lucide-react'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 function TestEnergyFlow() {
+  const [position, setPosition] = useState(0);
+  const sunDivRef = useRef<HTMLDivElement>(null);
+  const utilityPoleDivRef = useRef<HTMLDivElement>(null);
+  const housePlugDivRef = useRef<HTMLDivElement>(null);
+  const [connectionPoints, setConnectionPoints] = useState({
+    sun: { x: 0, y: 0 },
+    utilityPole: { x: 0, y: 0 },
+    housePlug: { x: 0, y: 0 }
+  });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPosition((prevPosition) => (prevPosition + 1) % 100);
+    }, 50);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    // Function to calculate the center points of each div
+    const calculateConnectionPoints = () => {
+      if (sunDivRef.current && utilityPoleDivRef.current && housePlugDivRef.current) {
+        const sunRect = sunDivRef.current.getBoundingClientRect();
+        const utilityPoleRect = utilityPoleDivRef.current.getBoundingClientRect();
+        const housePlugRect = housePlugDivRef.current.getBoundingClientRect();
+        
+        const containerRect = sunDivRef.current.parentElement?.parentElement?.getBoundingClientRect() || { left: 0, top: 0 };
+        
+        // Calculate positions relative to the parent container
+        setConnectionPoints({
+          sun: {
+            x: sunRect.left + sunRect.width / 2 - containerRect.left,
+            y: sunRect.top + sunRect.height / 2 - containerRect.top
+          },
+          utilityPole: {
+            x: utilityPoleRect.left + utilityPoleRect.width / 2 - containerRect.left,
+            y: utilityPoleRect.top + utilityPoleRect.height / 2 - containerRect.top
+          },
+          housePlug: {
+            x: housePlugRect.left + housePlugRect.width / 2 - containerRect.left,
+            y: housePlugRect.top + housePlugRect.height / 2 - containerRect.top
+          }
+        });
+      }
+    };
+
+    // Calculate initial positions
+    calculateConnectionPoints();
+    
+    // Recalculate on window resize
+    window.addEventListener('resize', calculateConnectionPoints);
+    
+    return () => window.removeEventListener('resize', calculateConnectionPoints);
+  }, []);
+
+  // Calculate the radius of the circular divs (half the width)
+  const divRadius = 45; // 90px width / 2
+
   return (
     <>
       <div className="text-[20px] font-semibold">Energy Flow</div>
-      <div className="grid grid-cols-3 grid-rows-2 -translate-y-8 h-full">
+      <div className="grid grid-cols-3 grid-rows-2 -translate-y-8 h-full relative">
         <div className="col-start-2 flex justify-center">
-            <div className="bg-purple-neon rounded-[100px] w-[90px] h-[90px] p-4 flex flex-col items-center border-2 border-primary-purple">
+            <div ref={sunDivRef} className="bg-purple-neon rounded-[100px] w-[90px] h-[90px] p-4 flex flex-col items-center border-2 border-primary-purple">
                 <Sun />
                 925W
             </div>
 
         </div>
         <div className="row-start-2 col-start-1">
-        <div className="bg-purple-neon rounded-[100px] w-[90px] h-[90px] p-4 flex flex-col items-center border-2 border-primary-purple">
+        <div ref={utilityPoleDivRef} className="bg-purple-neon rounded-[100px] w-[90px] h-[90px] p-4 flex flex-col items-center border-2 border-primary-purple">
                 <UtilityPole />
                 <div className="text-[12px]">{"<- 286 W"}</div>
                 <div className="text-[12px]">{"0 W ->"}</div>
             </div>
         </div>
         <div className="row-start-2 col-start-3 flex justify-end">
-        <div className="bg-orange-neon rounded-[100px] w-[90px] h-[90px] p-4 flex flex-col items-center border-2 border-primary-orange">
+        <div ref={housePlugDivRef} className="bg-orange-neon rounded-[100px] w-[90px] h-[90px] p-4 flex flex-col items-center border-2 border-primary-orange">
                 <HousePlug />
                 639 W
             </div>
+        </div>
+
+        {/* Lines connecting the components */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+          <svg className="w-full h-full" style={{ position: 'absolute', top: 0, left: 0 }}>
+            {/* Line from utility pole to house plug */}
+            {connectionPoints.utilityPole.x > 0 && (
+              <>
+                <line 
+                  x1={connectionPoints.utilityPole.x + divRadius * Math.cos(0)} 
+                  y1={connectionPoints.utilityPole.y}
+                  x2={connectionPoints.housePlug.x - divRadius * Math.cos(0)} 
+                  y2={connectionPoints.housePlug.y}
+                  stroke="#a855f7" 
+                  strokeWidth="3" 
+                />
+                <circle 
+                  cx={connectionPoints.utilityPole.x + (connectionPoints.housePlug.x - connectionPoints.utilityPole.x) * position/100}
+                  cy={connectionPoints.housePlug.y}
+                  r="5" 
+                  fill="#a855f7" 
+                />
+              </>
+            )}
+            
+            {/* Line from sun (left side) to utility pole */}
+            {connectionPoints.sun.x > 0 && (
+              <>
+                <path
+                  d={`M ${connectionPoints.sun.x - divRadius} ${connectionPoints.sun.y} 
+                      Q ${(connectionPoints.sun.x + connectionPoints.utilityPole.x) / 2 - 50} 
+                        ${(connectionPoints.sun.y + connectionPoints.utilityPole.y) / 2} 
+                        ${connectionPoints.utilityPole.x} ${connectionPoints.utilityPole.y - divRadius}`}
+                  stroke="#a855f7"
+                  strokeWidth="3"
+                  fill="transparent"
+                />
+                {/* Animated dot for sun to utility pole */}
+                <circle 
+                  r="5"
+                  fill="#a855f7"
+                >
+                  <animateMotion 
+                    dur="2s"
+                    repeatCount="indefinite"
+                    path={`M ${connectionPoints.sun.x - divRadius} ${connectionPoints.sun.y} 
+                          Q ${(connectionPoints.sun.x + connectionPoints.utilityPole.x) / 2 - 50} 
+                            ${(connectionPoints.sun.y + connectionPoints.utilityPole.y) / 2} 
+                            ${connectionPoints.utilityPole.x} ${connectionPoints.utilityPole.y - divRadius}`}
+                  />
+                </circle>
+              </>
+            )}
+            
+            {/* Line from sun (right side) to house plug */}
+            {connectionPoints.sun.x > 0 && (
+              <>
+                <path
+                  d={`M ${connectionPoints.sun.x + divRadius} ${connectionPoints.sun.y} 
+                      Q ${(connectionPoints.sun.x + connectionPoints.housePlug.x) / 2 + 50} 
+                        ${(connectionPoints.sun.y + connectionPoints.housePlug.y) / 2} 
+                        ${connectionPoints.housePlug.x} ${connectionPoints.housePlug.y - divRadius}`}
+                  stroke="#f97316"
+                  strokeWidth="3"
+                  fill="transparent"
+                />
+                {/* Animated dot for sun to house plug */}
+                <circle 
+                  r="5"
+                  fill="#f97316"
+                >
+                  <animateMotion 
+                    dur="2.5s"
+                    repeatCount="indefinite"
+                    path={`M ${connectionPoints.sun.x + divRadius} ${connectionPoints.sun.y} 
+                          Q ${(connectionPoints.sun.x + connectionPoints.housePlug.x) / 2 + 50} 
+                            ${(connectionPoints.sun.y + connectionPoints.housePlug.y) / 2} 
+                            ${connectionPoints.housePlug.x} ${connectionPoints.housePlug.y - divRadius}`}
+                  />
+                </circle>
+              </>
+            )}
+          </svg>
         </div>
       </div>
     </>
